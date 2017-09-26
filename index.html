@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript">
+    var title = '多 Y 轴示例';
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption({
+        color: colors,
+        title: {
+            text: title
+        },
+        legend: {
+            data: ['蒸发量', 'redu']
+        },
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {
+                    alignWithLabel: true
+                },
+                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '蒸发量',
+                min: 0,
+                max: 250,
+                position: 'left',
+                axisLine: {
+                    lineStyle: {
+                        color: colors[0]
+                    }
+                }
+            },
+            {
+                type: 'value',
+                name: 'redu',
+                min: 0,
+                max: 250,
+                position: 'right',
+                axisLine: {
+                    lineStyle: {
+                        color: colors[1]
+                    }
+                }
+            }
+        ],
+        series: [
+            {
+                name: '蒸发量',
+                type: 'bar',
+                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+            },
+            {
+                name: 'redu',
+                type: 'bar',
+                data: [36, 57, 120, 23.2, 5.6, 6.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+            }
+        ]
+    });
+</script>
+</body>
+</html>
